@@ -1,0 +1,145 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    color: #6b6967;
+    font-family: 'Nunito', sans-serif;
+    position: relative;
+
+}
+
+ul {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+input, textarea, select{
+    background-color: #f5f3f1;
+    outline: none;
+}
+
+input {
+    border: 1px solid #6b6967;
+}
+
+input:focus{
+    border: 1px solid #6b6967;
+}
+
+img {
+    border-radius: 50%;
+}
+
+header {
+    grid-area: header;
+    text-align: center;
+    background-color: red;
+    margin: 0;
+    padding: 20px 0;
+}
+
+main {
+    grid-area: main;
+    background-color: green;
+    padding: 20px 0;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto;
+    grid-template-areas: 
+    "header"
+    "main"
+    ;
+}
+
+.card {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    border-radius: 5px;
+    border: 1px solid #6b6967;
+}
+
+/* modal overlay */
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(100, 100, 100, 0.4)
+}
+
+    /* modal container */
+
+.modal {
+    width: 375px;
+    margin: 15% auto auto;
+    position: relative;
+    text-align: center;
+    background: #fff;
+    border: 1px solid #778;
+    border-radius: 5px;
+    padding: 30px 20px;
+}
+           
+/* Close modal */
+
+.modal-close {
+    position: absolute;
+    right: 15px;
+    top: 5px;
+    cursor: pointer;
+}
+
+
+/* Hide the modal initially */
+.hidden {
+    display: none;
+}
+
+
+/* ------------------------------------------------------------------
+     ------------------------ Media Queries ------------------------
+   ------------------------------------------------------------------  */
+
+/* Tablet */
+
+@media (min-width: 768px) { 
+ 
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-column-gap: 10px;
+        grid-row-gap: 20px;
+
+    }
+
+ .card {
+        background-color: yellow;
+        margin: 0 10px;
+ }
+    
+}
+
+/* Desktop */
+
+@media (min-width: 1024px) { 
+ 
+    .grid-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+ .card {
+        background-color: purple;
+ }
+    
+}
+

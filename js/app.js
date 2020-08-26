@@ -97,26 +97,31 @@ modalClose.addEventListener('click', () => {
 });
 });
    
- // ====================================================================
-    //  ---- Modal Cycle  ---- 
-    // ====================================================================
+// ====================================================================
+//  ---- Modal Cycle  ---- 
+// ====================================================================
 const rightArrow = document.querySelector(".right");
 const leftArrow = document.querySelector(".left");
 
+// when the right arrow is clicked
 rightArrow.addEventListener('click', e => {
+  // if the index is less than 11, increase the index  
      if(modalIndex < 11){
         modalIndex++;
         displayModal(modalIndex)  
+  // else if the index is 11 change it to 0      
    }else if(modalIndex === 11)
    modalIndex = 0;
     displayModal(modalIndex);
 });
 
+// when the right arrow is clicked
 leftArrow.addEventListener('click', e => {
+// if the index is 0, increase the index and display that model
 if(modalIndex > 0){
        modalIndex--;
-       console.log(modalIndex);
        displayModal(modalIndex)  
+// else change the index to 11 and display that model
   }else {
              modalIndex = 11;
    displayModal(modalIndex);

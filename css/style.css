@@ -143,7 +143,31 @@ img {
     display: none;
 }
 
+/* The arrows in the modal */
+.arrow-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
+.arrow {
+    border: solid burlywood;
+    border-width: 0 6px 6px 0;
+    display: inline-block;
+    padding: 3px;
+  }
+  
+  #right {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    /* transform: scale(2);     */
+  }
+
+  #left {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+    /* transform: scale(2); */
+  }
 
 
 /* ------------------------------------------------------------------
@@ -220,7 +244,7 @@ img {
     }
 
     input {
-        margin: 15px 20px 0 0;
+        margin: 15px 50px 0 0;
     }
 
     main {

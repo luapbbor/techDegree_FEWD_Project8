@@ -6,8 +6,7 @@ const gridContainer = document.querySelector(".grid-container");
 const overlay = document.querySelector(".overlay");
 const modalContainer = document.querySelector(".modal-content");
 const modalClose = document.querySelector(".modal-close");
-
-
+let modalIndex;
 
 
 // fetch data from API
@@ -31,6 +30,7 @@ function displayEmployees(employeeData) {
     let picture = employee.picture;
     // template literals make this so much cleaner!
     employeeHTML += `
+
 <div class="card" data-index="${index}">
 <div class="img-container">
 <img class="avatar" src="${picture.large}" />
@@ -41,6 +41,7 @@ function displayEmployees(employeeData) {
 <p class="address">${city}</p>
 </div>
 </div>
+
 `
 });
 gridContainer.innerHTML = employeeHTML;
@@ -69,29 +70,63 @@ function displayModal(index) {
 <p>Birthday:
 ${date.getMonth()}/${date.getDate()}/${date.getFullYear()}</p>
 </div>
+
 `;
 overlay.classList.remove("hidden");
 modalContainer.innerHTML = modalHTML;
+   
 }
 
-// when the grid container is clicked
+
+
+// when the card is clicked
 gridContainer.addEventListener('click', e => {
     // make sure the click is not on the gridContainer itself
     if (e.target !== gridContainer) {
     // select the card element based on its proximity to actual element clicked
     
     const card = e.target.closest(".card");
-    const index = card.getAttribute('data-index');
+   let index = card.getAttribute('data-index');
+   modalIndex = index;
     displayModal(index);
-    }
-    });
+
+};
 
 modalClose.addEventListener('click', () => {
-        overlay.classList.add("hidden");
+    overlay.classList.add("hidden");
+});
+});
+   
+ // ====================================================================
+    //  ---- Modal Cycle  ---- 
+    // ====================================================================
+const rightArrow = document.querySelector(".right");
+const leftArrow = document.querySelector(".left");
+
+rightArrow.addEventListener('click', e => {
+     if(modalIndex < 11){
+        modalIndex++;
+        displayModal(modalIndex)  
+   }else if(modalIndex === 11)
+   modalIndex = 0;
+    displayModal(modalIndex);
+});
+
+leftArrow.addEventListener('click', e => {
+if(modalIndex > 0){
+       modalIndex--;
+       console.log(modalIndex);
+       displayModal(modalIndex)  
+  }else {
+             modalIndex = 11;
+   displayModal(modalIndex);
+  }
 });
 
 
-         
+    
+
+
 // ====================================================================
 //  ---- Search function ---- 
 // This function listens for a "keyup" event on the search box and then
@@ -124,3 +159,4 @@ document.querySelector("#search").addEventListener("keyup", function () {
         }
     }
 });
+
